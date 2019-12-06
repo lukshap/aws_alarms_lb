@@ -1,1 +1,1 @@
-Module for managing rds alarms
+Module for managing lb alarms
