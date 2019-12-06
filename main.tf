@@ -12,5 +12,5 @@ resource "aws_cloudwatch_metric_alarm" "alb" {
   alarm_actions             = [data.aws_sns_topic.this.arn]
   insufficient_data_actions = []
 
-  dimensions = contains(keys(element(var.alb_alarms, count.index)), "dimensions") ? merge(lookup(element(var.alb_alarms, count.index), "dimensions"), {LoadBalancer = data.aws_lb.alb.id}) : {LoadBalancer = data.aws_lb.alb.id}
+  dimensions = contains(keys(element(var.alb_alarms, count.index)), "dimensions") ? merge(lookup(element(var.alb_alarms, count.index), "dimensions"), {LoadBalancer = data.aws_lb.alb.arn_suffix}) : {LoadBalancer = data.aws_lb.alb.arn_suffix}
 }
